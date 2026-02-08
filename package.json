@@ -1,0 +1,33 @@
+{
+  "name": "job-bot-monorepo",
+  "version": "1.0.0",
+  "description": "Telegram bot with backend API",
+  "private": true,
+  "scripts": {
+    "init": "npm run install:all && npm run setup:backend",
+    "install:all": "npm install && npm run install:bot && npm run install:backend",
+    "install:bot": "cd bot && npm install",
+    "install:backend": "cd backend && npm install",
+    "setup:backend": "npm run docker:up && npm run db:generate && npm run db:migrate",
+    "docker:up": "cd backend && npm run docker:up",
+    "db:generate": "cd backend && npm run db:generate",
+    "db:migrate": "cd backend && npm run db:migrate",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:bot\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:bot": "cd bot && npm run dev",
+    "build": "npm run build:backend && npm run build:bot",
+    "build:backend": "cd backend && npm run build",
+    "build:bot": "cd bot && npm run build",
+    "clean": "npm run clean:bot && npm run clean:backend",
+    "clean:bot": "cd bot && rm -rf node_modules dist",
+    "clean:backend": "cd backend && rm -rf node_modules dist",
+    "docker:down": "cd backend && npm run docker:down"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}

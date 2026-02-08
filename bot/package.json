@@ -1,0 +1,37 @@
+{
+	"name": "job-search-bot",
+	"version": "1.0.0",
+	"description": "Telegram bot for job search",
+	"license": "ISC",
+	"author": "",
+	"type": "commonjs",
+	"main": "dist/index.js",
+	"scripts": {
+		"dev": "nodemon --exec tsx ./src/index.ts",
+		"build": "tsc",
+		"start": "npm run build && node dist/index.js",
+		"start:prod": "node dist/index.ts",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.39.1",
+		"@types/dotenv": "^6.1.1",
+		"@types/node": "^24.10.1",
+		"eslint": "^9.39.1",
+		"globals": "^16.5.0",
+		"jiti": "^2.6.1",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.9.3",
+		"typescript-eslint": "^8.47.0"
+	},
+	"dependencies": {
+		"@xenova/transformers": "^2.17.2",
+		"axios": "^1.13.2",
+		"dotenv": "^17.2.3",
+		"node-cron": "^4.2.1",
+		"nodemon": "^3.1.11",
+		"ollama": "^0.6.3",
+		"telegraf": "^4.16.3",
+		"tsx": "^4.20.6"
+	}
+}

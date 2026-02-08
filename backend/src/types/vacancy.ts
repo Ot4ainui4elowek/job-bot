@@ -1,0 +1,78 @@
+/**
+ * Базовые типы для парсера вакансий
+ */
+
+export interface Vacancy {
+  id: string;
+  title: string;
+  company?: string;
+  salary?: string;
+  location?: string;
+  description?: string;
+  fullDescription?: string; // Полное описание с детальной страницы
+  url: string;
+  publishedAt?: Date;
+  education?: string;
+  experience?: string;
+  schedule?: string;
+  skills?: string[];
+  workPlace?: string;
+  source: 'rabota.md' | '999.md' | 'makler.md' | 'hh.ru' | 'other';
+  // Дополнительные поля для 999.md
+  author?: string; // Автор (Физ. или Юр. лицо)
+  seasonal?: boolean; // Сезонная работа
+  employmentType?: string; // Тип занятости
+  companyType?: string; // Тип компании
+  languages?: string[]; // Языки
+  contactPerson?: string; // Контактное лицо
+  region?: string; // Регион (полный адрес)
+  // Дополнительные поля для makler.md
+  vacancyType?: string; // Тип вакансии (Прямая/Агентство)
+  industry?: string; // Сферы деятельности
+  specialization?: string; // Специализация
+  workLocationType?: string; // Тип локации (внутри страны или за границей)
+  // Поля для категоризации через словарики (гибридная схема)
+  category?: string; // Каноническое название профессии для быстрого поиска
+  professionDictionaryIds?: string[]; // Ссылки на словарики источников
+  // Поля для отслеживания актуальности
+  firstSeenAt?: Date | string; // Когда впервые найдена
+  lastSeenAt?: Date | string; // Когда найдена в последний раз
+  isActive?: boolean; // Активна ли сейчас
+}
+
+export interface ParseResult {
+  vacancies: Vacancy[];
+  totalFound: number;
+  page: number;
+  hasNextPage: boolean;
+}
+
+export interface ParserConfig {
+  baseUrl: string;
+  searchQuery?: string;
+  maxPages?: number; // для будущей пагинации
+  delay?: number; // задержка между запросами в мс
+}
+
+export interface Parser {
+  parse(config: ParserConfig): Promise<ParseResult>;
+  parseVacancyDetails(url: string): Promise<Partial<Vacancy>>;
+}
+
+export interface SearchFilters {
+  keywords?: string[];
+  locations?: string[];
+  salaryMin?: number;
+  salaryMax?: number;
+  experience?: string[];
+  schedule?: string[];
+  employment?: string[];
+  skills?: string[];
+  sources?: ('rabota.md' | '999.md' | 'makler.md' | 'hh.ru')[];
+  limit?: number;
+  page?: number;
+  useSemanticSearch?: boolean;
+  searchBy?: 'title' | 'category';
+  locationType?: 'moldova' | 'abroad' | 'aboard';
+  workLocationType?: 'moldova' | 'abroad' | 'international';
+}
