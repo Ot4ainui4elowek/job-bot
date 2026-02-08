@@ -143,10 +143,8 @@ export class SearchCommand extends Command {
 
 			if (response === null) {
 				await ctx.reply(
-					'Упс! Что-то пошло не так',
-					Markup.inlineKeyboard([
-						Markup.button.callback('Попробовать ещё раз', 'refresh'),
-					]),
+					'Упс! Что-то пошло не так.n\GПопроюуйте ещё раз:',
+					SearchFromCategoryKeyboard,
 				)
 				return
 			}
