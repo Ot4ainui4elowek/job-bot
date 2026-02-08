@@ -35,17 +35,26 @@ npm run init
 
 #### Backend (`backend/.env`)
 ```env
-DATABASE_URL="postgresql://user:password@localhost:5432/jobbot?schema=public"
-PORT=3000
-JWT_SECRET=your-secret-key
-NODE_ENV=development
+POSTGRES_DB=parsing
+POSTGRES_USER=parser
+POSTGRES_PASSWORD=parser123
+POSTGRES_PORT=5433  # Внешний порт (5433), внутри Docker остается 5432
+
+# Database URL - для подключения с хоста
+DATABASE_URL=postgresql://parser:parser123@localhost:5433/parsing?schema=public
+
+# ============================================
+# REDIS
+# ============================================
+REDIS_HOST=localhost
+REDIS_PORT=6380  # Внешний порт (6380), внутри Docker остается 6379
+REDIS_PASSWORD=redis123
 ```
 
 #### Bot (`bot/.env`)
 ```env
-BOT_TOKEN=your-telegram-bot-token
-API_URL=http://localhost:3000
-NODE_ENV=development
+MULTI_PARSER_URL="http://localhost:3000/api/"
+BOT_TOKEN="8295810251:AAG-CWDdqAMl-D-x1FqA-x1E_vQ_q96WMKY"
 ```
 
 ### 3. Запуск проекта
