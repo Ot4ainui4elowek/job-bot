@@ -80,38 +80,6 @@ cd backend; Copy-Item .env.example .env; cd ..\bot; Copy-Item .env.example .env;
 2. **Убедитесь**, что Docker запущен перед выполнением `npm run init`
 3. **Добавьте BOT_TOKEN** в `bot/.env` (получите его у @BotFather в Telegram)
 
-## ✅ Проверка установки
-
-После успешной установки у вас должна быть следующая структура:
-
-```
-your-project/
-├── node_modules/
-├── package.json
-├── package-lock.json
-├── README.md
-├── .gitignore
-│
-├── backend/
-│   ├── node_modules/
-│   ├── src/                    # Ваш исходный код
-│   ├── prisma/                 # Ваши Prisma схемы
-│   ├── package.json
-│   ├── package-lock.json
-│   ├── tsconfig.json
-│   ├── docker-compose.yml
-│   ├── .env
-│   └── .env.example
-│
-└── bot/
-    ├── node_modules/
-    ├── src/                    # Ваш исходный код бота
-    ├── package.json
-    ├── package-lock.json
-    ├── tsconfig.json
-    ├── .env
-    └── .env.example
-```
 
 ## 🚀 Запуск проекта
 
