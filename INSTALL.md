@@ -14,11 +14,14 @@ your-project/
 │   ├── package.json                # Используйте файл: backend-package.json
 │   ├── tsconfig.json               # Используйте файл: backend-tsconfig.json
 │   ├── docker-compose.yml          # Используйте файл: docker-compose.yml
+│   ├── .env                        # Используйте файл: .env
+│   ├── .env.local                  # Используйте файл: .env.local
 │   └── .env.example                # Используйте файл: backend.env.example
 │
 └── bot/
     ├── package.json                # Используйте файл: bot-package.json
     ├── tsconfig.json               # Используйте файл: bot-tsconfig.json
+    ├── .env.                       # Используйте файл: bot-tsconfig.json
     └── .env.example                # Используйте файл: bot.env.example
 ```
 
